@@ -1,5 +1,5 @@
 package com.example.oekonav;
-
+import com.parse.Parse;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -9,15 +9,27 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
-
+import com.parse.ParseInstallation;
+import com.parse.ParseUser;
+import com.parse.ParseException;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.parse.LogInCallback;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Parse.initialize(new Parse.Configuration.Builder(this)
+                .applicationId("dq0ikfmgyQHFQr5IwohD9Kw0eC46w6Jb5NCpVdXH")
+                .clientKey("0JmGmpQb9Z4V0njeWQ9Gh2iItGeoEDa7eutfrt76")
+                .server("https://parseapi.back4app.com")
+                .build()
+        );
+        ParseInstallation.getCurrentInstallation().saveInBackground();
+
+
+
         setContentView(R.layout.activity_main);
 
         Application app = getApplication();
@@ -40,11 +52,19 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(final View view) {
 
-                        System.out.println(textInputUsername.getText());
-                        myapp.createUser(textInputUsername.getText().toString());
-                        System.out.println(myapp.getUser().getName());
+                        ParseUser.logInInBackground(textInputUsername.getText().toString(), textInputPassword.getText().toString(), new LogInCallback() {
+                            public void done(ParseUser user, ParseException e) {
+                                if (user != null) {
+                                  goToMap(view);
+                                } else {
+                                    textInputUsername.setText("");
+                                    textInputPassword.setText("");
+                                }
+                            }
+                        });
+
                     }
                 }
         );
@@ -52,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                     goToRegister(view);
                     }
                 }
@@ -64,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
     // Wechselt bei aufruf zum ausgewählten TrainProg
     public void goToRegister (View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+    public void goToMap (View view) {
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 }
