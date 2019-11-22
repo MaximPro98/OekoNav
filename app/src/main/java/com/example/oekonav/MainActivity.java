@@ -28,15 +28,22 @@ public class MainActivity extends AppCompatActivity {
         );
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
-
-
         setContentView(R.layout.activity_main);
 
-        Application app = getApplication();
-        MyApp myapp = (MyApp) app;
 
-        //myapp.initialisieren();
-        initListener(myapp);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if (currentUser != null) {
+            Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        } else {
+            Application app = getApplication();
+            MyApp myapp = (MyApp) app;
+            //myapp.initialisieren();
+            initListener(myapp);
+        }
+
+
     }
 
     private void initListener(MyApp ma) {
