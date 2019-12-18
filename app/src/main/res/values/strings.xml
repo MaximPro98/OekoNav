@@ -2,4 +2,9 @@
     <string name="app_name">OekoNav</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="register_new_account">Register New Account</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="register">register</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
