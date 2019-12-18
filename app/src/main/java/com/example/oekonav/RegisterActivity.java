@@ -1,20 +1,22 @@
 package com.example.oekonav;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseUser;
+import com.parse.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -28,30 +30,139 @@ public class RegisterActivity extends AppCompatActivity {
         final TextInputEditText emailConf = findViewById(R.id.txt_emailConf_reg);
         final TextInputEditText password = findViewById(R.id.txt_password_reg);
         final TextInputEditText passwordConf = findViewById(R.id.txt_passwordConf_reg);
+        final TextView errorMsg = findViewById(R.id.txt_error_reg);
         final Button btnReg = findViewById(R.id.btn_Reg);
+        username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(username.getText().length() < 6){
+                        username.setTextColor(Color.RED);
+                    }else{
+                        username.setTextColor(Color.GREEN);
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(password.getText().length() < 8){
+                    password.setTextColor(Color.RED);
+                }else{
+                    password.setTextColor(Color.GREEN);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        passwordConf.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(password.getText().equals(passwordConf.getText())){
+                        passwordConf.setTextColor(Color.RED);
+                    }else{
+                        passwordConf.setTextColor(Color.GREEN);
+
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String emailTest = email.getText().toString().trim();
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                if(emailTest.matches((emailPattern))){
+                    email.setTextColor(Color.GREEN);
+                }else{
+                    email.setTextColor(Color.RED);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        emailConf.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(emailConf.getText().equals(email.getText())){
+                        emailConf.setTextColor(Color.RED);
+                    }else{
+                        emailConf.setTextColor(Color.GREEN);
+
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         btnReg.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
 
-                       if(password.getText() == passwordConf.getText()){
-                           password.setTextColor(Color.RED);
-                           passwordConf.setTextColor(Color.RED);
-                       }else{
-                           password.setTextColor(Color.BLACK);
-                           passwordConf.setTextColor(Color.BLACK);
-                       }
-                       String emailTest = email.getText().toString().trim();
-                        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                        if((email.getText() == emailConf.getText()) && emailTest.matches(emailPattern) ){
-                            email.setTextColor(Color.RED);
-                            emailConf.setTextColor(Color.RED);
-                        }else{
-                            email.setTextColor(Color.BLACK);
-                            emailConf.setTextColor(Color.BLACK);
-                        }
+                      if(username.getCurrentTextColor() == Color.GREEN &&
+                              email.getCurrentTextColor() == Color.GREEN
+                      && emailConf.getCurrentTextColor() == Color.GREEN &&
+                              password.getCurrentTextColor() == Color.GREEN && passwordConf.getCurrentTextColor() == Color.GREEN){
 
+                          ParseUser user = new ParseUser();
+                          user.setEmail(email.getText().toString());
+                          user.setPassword(password.getText().toString());
+                          user.setUsername(username.getText().toString());
+                          user.signUpInBackground(new SignUpCallback() {
+                              public void done(ParseException e) {
+                                  if (e == null) {
+                                      errorMsg.setText("");
+                                      goToMap(view);
+                                  } else {
+                                     errorMsg.setText("Error occured!");
+                                     errorMsg.setTextColor(Color.RED);
+                                  }
+                              }
+                          });
+                      }
 
                     }
                 }
@@ -67,6 +178,10 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    public void goToMap (View view) {
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
     }
 
 }

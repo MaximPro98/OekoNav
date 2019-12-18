@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Parse.enableLocalDatastore(this);
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("dq0ikfmgyQHFQr5IwohD9Kw0eC46w6Jb5NCpVdXH")
                 .clientKey("0JmGmpQb9Z4V0njeWQ9Gh2iItGeoEDa7eutfrt76")
