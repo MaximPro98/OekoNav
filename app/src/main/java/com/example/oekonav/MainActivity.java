@@ -19,9 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
         initListener();
     }
 
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(final View view) {
 
-                        ParseUser.logInInBackground(textInputUsername.getText().toString().toLowerCase(), textInputPassword.getText().toString(), new LogInCallback() {
+                        ParseUser.logInInBackground(textInputUsername.getText().toString(), textInputPassword.getText().toString(), new LogInCallback() {
                             public void done(ParseUser user, ParseException e) {
                                 if (user != null) {
                                   goToMap(view);

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView_ProfileDesc"
         android:layout_width="286dp"
@@ -27,28 +28,18 @@
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <TextView
-        android:id="@+id/text_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="8dp" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="47dp"
         android:layout_marginEnd="20dp"
         app:cardBackgroundColor="@color/ef_white"
         app:cardCornerRadius="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_gallery">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -76,8 +67,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_gallery" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView_ScoreValue"
@@ -99,4 +89,5 @@
         app:layout_constraintEnd_toEndOf="@+id/textView_ProfileDesc"
         app:layout_constraintStart_toStartOf="@+id/textView_ProfileDesc"
         app:layout_constraintTop_toBottomOf="@+id/textView_ProfileDesc" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

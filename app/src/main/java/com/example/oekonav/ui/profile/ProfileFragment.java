@@ -2,6 +2,7 @@ package com.example.oekonav.ui.profile;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,25 +16,51 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.oekonav.FileHelper;
 import com.example.oekonav.R;
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.features.ReturnMode;
 import com.esafirm.imagepicker.model.Image;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
+import java.io.File;
+import java.net.URI;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
-    ImageView userImage;
+    private ImageView userImage;
     private ProfileViewModel profileViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         profileViewModel =
                 ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
         userImage = root.findViewById(R.id.img_profile_view);
+        TextView userTagline = root.findViewById(R.id.textView_ProfileDesc);
+        TextView username = root.findViewById(R.id.textView_ProfileName);
+        TextView score = root.findViewById(R.id.textView_ScoreValue);
 
+        username.setText(ParseUser.getCurrentUser().getUsername());
+        score.setText(ParseUser.getCurrentUser().get("Score").toString());
+         String tagline = "";
+         try {
+             tagline = ParseUser.getCurrentUser().get("Tagline").toString();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+        if (tagline != null) {
+
+            userTagline.setText("Hey I'm New");
+        }else{
+            userTagline.setText("Hey I'm New");
+
+        }
         userImage.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 ImagePicker.create(ProfileFragment.this)
@@ -46,12 +73,7 @@ public class ProfileFragment extends Fragment {
                         .start(0);
             }
         });
-        profileViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
 
         return root;
     }
@@ -59,7 +81,21 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         List<Image> images = ImagePicker.getImages(data);
         if (images != null && !images.isEmpty()) {
+            Uri fileURI =  Uri.fromFile(new File(images.get(0).getPath()));
             userImage.setImageBitmap(BitmapFactory.decodeFile(images.get(0).getPath()));
+            byte[] fileBytes = FileHelper.getByteArrayFromFile(null, fileURI);
+            fileBytes = FileHelper.reduceImageForUpload(fileBytes);
+            ParseFile userimg = new ParseFile("profile_" + ParseUser.getCurrentUser().getObjectId() + ".png",fileBytes);
+            userimg.saveInBackground(new SaveCallback() {
+                public void done(ParseException e) {
+                    // If successful add file to user and signUpInBackground
+                    if(null == e) {
+                        ParseUser.getCurrentUser().put("ProfilePicture", userimg);
+                        ParseUser.getCurrentUser().saveEventually();
+                    }
+                }
+            });
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

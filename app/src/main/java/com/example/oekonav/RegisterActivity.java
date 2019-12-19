@@ -31,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
         final TextInputEditText password = findViewById(R.id.txt_password_reg);
         final TextInputEditText passwordConf = findViewById(R.id.txt_passwordConf_reg);
         final TextView errorMsg = findViewById(R.id.txt_error_reg);
+        errorMsg.setText("");
+
         final Button btnReg = findViewById(R.id.btn_Reg);
         username.addTextChangedListener(new TextWatcher() {
             @Override
@@ -151,6 +153,8 @@ public class RegisterActivity extends AppCompatActivity {
                           user.setEmail(email.getText().toString());
                           user.setPassword(password.getText().toString());
                           user.setUsername(username.getText().toString());
+                          user.put("Score", 0);
+                          user.put("Tagline", "Hey I'm New");
                           user.signUpInBackground(new SignUpCallback() {
                               public void done(ParseException e) {
                                   if (e == null) {
