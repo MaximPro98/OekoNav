@@ -184,6 +184,7 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
         super.onLowMemory();
         mapView.onLowMemory();
     }
+
     private void checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
