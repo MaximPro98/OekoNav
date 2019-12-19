@@ -18,18 +18,5 @@ public class FriendlistFragment extends Fragment {
 
     private FriendlistViewModel friendlistViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        friendlistViewModel =
-                ViewModelProviders.of(this).get(FriendlistViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_friendlist, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        friendlistViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
-    }
+
 }

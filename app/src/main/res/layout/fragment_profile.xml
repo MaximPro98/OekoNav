@@ -6,19 +6,39 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textView_ProfileDesc"
+        android:layout_width="286dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="50dp"
+        android:text="Test Text which is very long to show how this text lines up in the Profile Menu"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_ProfileName"
+        app:layout_constraintStart_toStartOf="@+id/textView_ProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ProfileName" />
+
+    <TextView
+        android:id="@+id/textView_ProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Unknown User"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
         android:id="@+id/text_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="8dp" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="20dp"
@@ -47,4 +67,36 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView_ScoreName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_gallery" />
+
+    <TextView
+        android:id="@+id/textView_ScoreValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_ScoreName"
+        app:layout_constraintStart_toStartOf="@+id/textView_ScoreName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ScoreName" />
+
+    <Button
+        android:id="@+id/button_EditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Edit Profile"
+        app:layout_constraintEnd_toEndOf="@+id/textView_ProfileDesc"
+        app:layout_constraintStart_toStartOf="@+id/textView_ProfileDesc"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ProfileDesc" />
 </androidx.constraintlayout.widget.ConstraintLayout>
