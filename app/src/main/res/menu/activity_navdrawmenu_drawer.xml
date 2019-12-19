@@ -16,7 +16,7 @@
         <item
             android:id="@+id/nav_friendlist"
             android:icon="@drawable/icon_friendlist"
-            android:title="Friendlist" />
+            android:title="Friends" />
         <item
             android:id="@+id/nav_challenges"
             android:icon="@drawable/icon_challenge"

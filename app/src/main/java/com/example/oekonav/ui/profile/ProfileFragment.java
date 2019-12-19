@@ -21,12 +21,12 @@ import com.example.oekonav.R;
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.features.ReturnMode;
 import com.esafirm.imagepicker.model.Image;
+import com.parse.GetDataCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
 import java.io.File;
 import java.net.URI;
 import java.util.List;
@@ -39,7 +39,23 @@ public class ProfileFragment extends Fragment {
         profileViewModel =
                 ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
+
         userImage = root.findViewById(R.id.img_profile_view);
+        try {
+            ParseFile userimg = ParseUser.getCurrentUser().fetchIfNeeded().getParseFile("ProfilePicture");
+            if(userimg != null){
+                userimg.getDataInBackground(new GetDataCallback() {
+                    @Override
+                    public void done(byte[] data, ParseException e) {
+                        userImage.setImageBitmap(BitmapFactory.decodeByteArray(data,0,data.length));
+                    }
+                });
+            }
+
+        }catch (ParseException e){
+
+        }
+
         TextView userTagline = root.findViewById(R.id.textView_ProfileDesc);
         TextView username = root.findViewById(R.id.textView_ProfileName);
         TextView score = root.findViewById(R.id.textView_ScoreValue);

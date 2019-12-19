@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
     {
         gmap=googleMap;
         gmap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        gmap.setMinZoomPreference(16);
+       // gmap.setMinZoomPreference(50);
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getActivity(),

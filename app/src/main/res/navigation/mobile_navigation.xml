@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/nav_friendlist"
         android:name="com.example.oekonav.ui.friendlist.FriendlistFragment"
-        android:label="Friendlist"
+        android:label="Friends"
         tools:layout="@layout/fragment_friendlist" />
 </navigation>

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.parse.GetCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
@@ -30,8 +32,7 @@ public class SpalshScreen extends AppCompatActivity {
 
         if(currentUser != null){
             if (currentUser.isAuthenticated()) {
-                Intent intent = new Intent(this, Navdrawmenu.class);
-                startActivity(intent);
+    gotoMap();
             } else {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
@@ -41,5 +42,9 @@ public class SpalshScreen extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+    public void gotoMap() {
+        Intent intent = new Intent(this, Navdrawmenu.class);
+        startActivity(intent);
     }
 }
