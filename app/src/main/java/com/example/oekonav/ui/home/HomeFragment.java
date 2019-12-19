@@ -57,14 +57,13 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null, false);
         mapView = (MapView) view.findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-        mapView.onResume();
+        buildGoogleApiClient();
+
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        setUpMapIfNeeded();
 
         return view;
     }
@@ -110,8 +109,8 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
     @Override
     public void onConnected(Bundle bundle) {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setInterval(10);
+        mLocationRequest.setFastestInterval(10);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)

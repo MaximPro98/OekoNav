@@ -24,13 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Application app = getApplication();
-        MyApp myapp = (MyApp) app;
-        //myapp.initialisieren();
-        initListener(myapp);
+
+        initListener();
     }
 
-    private void initListener(MyApp ma) {
+    private void initListener() {
         final TextInputEditText textInputUsername = findViewById(R.id.textInputUsername);
         final TextInputEditText textInputPassword = findViewById(R.id.textInputPassword);
         final Button buttonLogin = findViewById(R.id.buttonLogin);
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         final Context context = this;
 
-        final MyApp myapp = ma;
 
         buttonLogin.setOnClickListener(
                 new View.OnClickListener() {
