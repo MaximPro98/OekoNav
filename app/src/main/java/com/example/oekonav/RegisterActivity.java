@@ -180,7 +180,7 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void goToMap (View view) {
-        Intent intent = new Intent(this, MapActivity.class);
+        Intent intent = new Intent(this, Navdrawmenu.class);
         startActivity(intent);
     }
 

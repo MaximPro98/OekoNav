@@ -29,7 +29,7 @@ public class SpalshScreen extends AppCompatActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         if (currentUser != null) {
-            Intent intent = new Intent(this, MapActivity.class);
+            Intent intent = new Intent(this, Navdrawmenu.class);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, MainActivity.class);
