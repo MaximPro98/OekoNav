@@ -1,4 +1,4 @@
-package com.example.oekonav.ui.send;
+package com.example.oekonav.ui.friendlist;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.oekonav.R;
 
-public class SendFragment extends Fragment {
+public class FriendlistFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private FriendlistViewModel friendlistViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
+        friendlistViewModel =
+                ViewModelProviders.of(this).get(FriendlistViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_friendlist, container, false);
         final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        friendlistViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

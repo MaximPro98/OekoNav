@@ -57,13 +57,14 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null, false);
         mapView = (MapView) view.findViewById(R.id.mapView);
-        buildGoogleApiClient();
-
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume();
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setUpMapIfNeeded();
 
         return view;
     }
@@ -108,22 +109,28 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
     }
     @Override
     public void onConnected(Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(10);
-        mLocationRequest.setFastestInterval(10);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+        if(mGoogleApiClient.isConnected()){
+            mLocationRequest = new LocationRequest();
+            mLocationRequest.setInterval(1000);
+            mLocationRequest.setFastestInterval(500);
+            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            if (ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+            }
         }
     }
 
     @Override
-    public void onConnectionSuspended(int i) {}
+    public void onConnectionSuspended(int i) {
+
+    }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {}
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
 
     @Override
     public void onLocationChanged(Location location)
