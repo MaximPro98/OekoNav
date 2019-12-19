@@ -20,31 +20,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("dq0ikfmgyQHFQr5IwohD9Kw0eC46w6Jb5NCpVdXH")
-                .clientKey("0JmGmpQb9Z4V0njeWQ9Gh2iItGeoEDa7eutfrt76")
-                .server("https://parseapi.back4app.com")
-                .build()
-        );
-        ParseInstallation.getCurrentInstallation().saveInBackground();
-
         setContentView(R.layout.activity_main);
 
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
 
-        if (currentUser != null) {
-            Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);
-        } else {
-            Application app = getApplication();
-            MyApp myapp = (MyApp) app;
-            //myapp.initialisieren();
-            initListener(myapp);
-        }
-
-
+        Application app = getApplication();
+        MyApp myapp = (MyApp) app;
+        //myapp.initialisieren();
+        initListener(myapp);
     }
 
     private void initListener(MyApp ma) {
