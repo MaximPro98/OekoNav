@@ -21,6 +21,10 @@
             android:id="@+id/nav_challenges"
             android:icon="@drawable/icon_challenge"
             android:title="Challenges" />
+        <item
+            android:id="@+id/nav_mailbox"
+            android:icon="@drawable/ic_mailbox"
+            android:title="Mailbox" />
     </group>
 
 </menu>
