@@ -23,13 +23,6 @@ public class ChallengesFragment extends Fragment {
         challengesViewModel =
                 ViewModelProviders.of(this).get(ChallengesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_challenges, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        challengesViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }

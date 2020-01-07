@@ -6,25 +6,61 @@
     android:layout_height="match_parent">
 
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:id="@+id/scrollView3"
+        android:layout_width="369dp"
+        android:layout_height="510dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/text_send"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/friendlistTextView3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:text="Hallooo Halloo"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/friendlistTextView1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:text="1 000 000 000 000"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/friendlistButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:text="Go to Profile"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+            </TableRow>
+
+        </TableLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/friendlistButton2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
-
-    </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:text="Add Friend"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
