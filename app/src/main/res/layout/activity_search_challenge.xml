@@ -38,7 +38,7 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="150"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
@@ -64,8 +64,8 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <ScrollView
-        android:layout_width="300"
-        android:layout_height="400"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
 
                 <Button
                     android:id="@+id/button10"
-                    android:layout_width="60"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:text="Add" />
             </TableRow>
