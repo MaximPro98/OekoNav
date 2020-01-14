@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/AddFriendEditText"
-        android:layout_width="248dp"
+        android:layout_width="250dp"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"

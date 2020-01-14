@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.oekonav.AddChallenge;
 import com.example.oekonav.CreateChallengeActivity;
 import com.example.oekonav.R;
 
@@ -40,6 +41,19 @@ public class ChallengesFragment extends Fragment {
 
         );
 
+        buttonCreateChallenge = root.findViewById(R.id.challengelistButton2);
+
+
+        buttonCreateChallenge.setOnClickListener(new View.OnClickListener() {
+
+                                                     @Override
+                                                     public void onClick(View view) {
+                                                         goToAddChallenge(view);
+                                                     }
+                                                 }
+
+        );
+
         return root;
     }
 
@@ -47,6 +61,12 @@ public class ChallengesFragment extends Fragment {
     // Wechselt bei aufruf zur CreateChallengeActivity
     public void goToCreateChallenge(View view) {
         Intent i = new Intent(getActivity(), CreateChallengeActivity.class);
+        startActivity(i);
+        ((Activity) getActivity()).overridePendingTransition(0, 0);
+    }
+    // Wechselt bei aufruf zur CreateChallengeActivity
+    public void goToAddChallenge(View view) {
+        Intent i = new Intent(getActivity(), AddChallenge.class);
         startActivity(i);
         ((Activity) getActivity()).overridePendingTransition(0, 0);
     }
