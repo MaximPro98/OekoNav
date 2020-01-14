@@ -185,6 +185,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
     public void goToMap (View view) {
         Intent intent = new Intent(this, Navdrawmenu.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
         startActivity(intent);
     }
 

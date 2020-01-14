@@ -1,6 +1,8 @@
 package com.example.oekonav.ui.profile;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -31,6 +34,8 @@ import java.io.File;
 import java.net.URI;
 import java.util.List;
 
+import static com.parse.Parse.getApplicationContext;
+
 public class ProfileFragment extends Fragment {
     private ImageView userImage;
     private ProfileViewModel profileViewModel;
@@ -50,10 +55,16 @@ public class ProfileFragment extends Fragment {
                         userImage.setImageBitmap(BitmapFactory.decodeByteArray(data,0,data.length));
                     }
                 });
+            }else{
+                Bitmap icon = BitmapFactory.decodeResource(root.getResources(),
+                        R.drawable.icon_profile);
+                userImage.setImageBitmap(icon);
             }
 
         }catch (ParseException e){
-
+            Bitmap icon = BitmapFactory.decodeResource(root.getResources(),
+                    R.drawable.icon_profile);
+            userImage.setImageBitmap(icon);
         }
 
         TextView userTagline = root.findViewById(R.id.textView_ProfileDesc);
@@ -101,13 +112,19 @@ public class ProfileFragment extends Fragment {
             userImage.setImageBitmap(BitmapFactory.decodeFile(images.get(0).getPath()));
             byte[] fileBytes = FileHelper.getByteArrayFromFile(null, fileURI);
             fileBytes = FileHelper.reduceImageForUpload(fileBytes);
-            ParseFile userimg = new ParseFile("profile_" + ParseUser.getCurrentUser().getObjectId() + ".png",fileBytes);
+            ParseFile userimg = new ParseFile("profile_" + ParseUser.getCurrentUser().getObjectId(),fileBytes);
             userimg.saveInBackground(new SaveCallback() {
                 public void done(ParseException e) {
                     // If successful add file to user and signUpInBackground
                     if(null == e) {
                         ParseUser.getCurrentUser().put("ProfilePicture", userimg);
                         ParseUser.getCurrentUser().saveEventually();
+                        Context context = getApplicationContext();
+                        CharSequence text = "Image Saved!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
                     }
                 }
             });

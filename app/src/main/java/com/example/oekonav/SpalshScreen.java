@@ -32,19 +32,24 @@ public class SpalshScreen extends AppCompatActivity {
 
         if(currentUser != null){
             if (currentUser.isAuthenticated()) {
-    gotoMap();
+                gotoMap();
             } else {
                 Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivity(intent);
             }
         }else{
             Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
             startActivity(intent);
         }
 
     }
     public void gotoMap() {
         Intent intent = new Intent(this, Navdrawmenu.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 }

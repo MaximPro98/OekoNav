@@ -7,14 +7,14 @@
     tools:context=".AddFriendActivity">
 
     <EditText
-        android:id="@+id/AddFriendEditText"
+        android:id="@+id/searchFriendEditText"
         android:layout_width="250dp"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@Name"
+        android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFriendTextView2" />
 
@@ -29,24 +29,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addFriendbutton"
+        android:id="@+id/searchFriendbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="20dp"
         android:text="@android:string/search_go"
-        app:layout_constraintBottom_toBottomOf="@+id/AddFriendEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/searchFriendEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AddFriendEditText"
-        app:layout_constraintTop_toTopOf="@+id/AddFriendEditText" />
+        app:layout_constraintStart_toEndOf="@+id/searchFriendEditText"
+        app:layout_constraintTop_toTopOf="@+id/searchFriendEditText" />
 
     <ScrollView
         android:layout_width="344dp"
         android:layout_height="430dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/addFriendbutton"
-        app:layout_constraintStart_toStartOf="@+id/AddFriendEditText"
-        app:layout_constraintTop_toBottomOf="@+id/AddFriendEditText">
+        app:layout_constraintEnd_toEndOf="@+id/searchFriendbutton"
+        app:layout_constraintStart_toStartOf="@+id/searchFriendEditText"
+        app:layout_constraintTop_toBottomOf="@+id/searchFriendEditText">
 
         <TableLayout
             android:layout_width="match_parent"
