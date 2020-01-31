@@ -7,7 +7,7 @@
     tools:context=".AddChallenge">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/layout_ChallangeNameSearch"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_Challange_Search_Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Challenge Name" />
@@ -28,9 +29,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/layout_ChallangeNameSearch">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_CreatorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Creator Username" />
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="Difficulty:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,40 +59,17 @@
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
-    <ScrollView
-        android:layout_width="343dp"
-        android:layout_height="406dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/button11"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
+    <!-- <ScrollView
+        android:layout_width="351dp"
+        android:layout_height="526dp"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="197dp">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </ScrollView>-->
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="255dp"
-                    android:layout_height="wrap_content"
-                    android:text="Example Challenge" />
-
-                <Button
-                    android:id="@+id/button12"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:text="Add" />
-            </TableRow>
-
-        </TableLayout>
-    </ScrollView>
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/btn_searchChallange"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -97,5 +77,20 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinner2"
         app:layout_constraintStart_toEndOf="@+id/spinner2"
         app:layout_constraintTop_toTopOf="@+id/spinner2" />
+
+    <ListView
+        android:id="@+id/lstView_ChallangeResult"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:divider="#0000CC"
+        android:dividerHeight="0.1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_searchChallange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

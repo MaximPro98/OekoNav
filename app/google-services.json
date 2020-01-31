@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "731446809473",
+    "firebase_url": "https://oekonav-da727.firebaseio.com",
+    "project_id": "oekonav-da727",
+    "storage_bucket": "oekonav-da727.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731446809473:android:c353eb837b8d2210a80e80",
+        "android_client_info": {
+          "package_name": "com.example.oekonav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731446809473-dagcp65qptc9iulojkmko4v54u8p0htp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlMjBEoYNv05ogIYbYT_UWUEHuJhWQtxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731446809473-dagcp65qptc9iulojkmko4v54u8p0htp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

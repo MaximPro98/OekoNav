@@ -23,8 +23,13 @@ public class SpalshScreen extends AppCompatActivity {
                 .server("https://parseapi.back4app.com")
                 .build()
         );
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("GCMSenderId", "731446809473");
+        if (ParseUser.getCurrentUser() != null) {
+            installation.put("user", ParseUser.getCurrentUser());
 
+        }
+        installation.saveInBackground();
         setContentView(R.layout.activity_spalsh_screen);
 
 

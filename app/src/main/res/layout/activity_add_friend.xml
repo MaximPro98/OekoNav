@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AddFriendActivity">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/searchFriendEditText"
         android:layout_width="250dp"
         android:layout_height="46dp"
@@ -15,6 +15,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/username"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFriendTextView2" />
 
@@ -40,38 +41,19 @@
         app:layout_constraintStart_toEndOf="@+id/searchFriendEditText"
         app:layout_constraintTop_toTopOf="@+id/searchFriendEditText" />
 
-    <ScrollView
-        android:layout_width="344dp"
-        android:layout_height="430dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/searchFriendbutton"
-        app:layout_constraintStart_toStartOf="@+id/searchFriendEditText"
-        app:layout_constraintTop_toBottomOf="@+id/searchFriendEditText">
+    <ListView
+        android:id="@+id/ListSearchResults"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:divider="#0000CC"
+        android:dividerHeight="0.1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchFriendbutton" />
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="218dp"
-                    android:layout_height="wrap_content"
-                    android:text="Aprettylongusername"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Add Friend" />
-            </TableRow>
-
-        </TableLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
