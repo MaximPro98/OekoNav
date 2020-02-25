@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,15 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.oekonav.AddFriendActivity;
 import com.example.oekonav.R;
+import com.example.oekonav.resources.FriendlistAdapter;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FriendlistFragment extends Fragment {
 
@@ -26,8 +36,25 @@ public class FriendlistFragment extends Fragment {
                 ViewModelProviders.of(this).get(FriendlistViewModel.class);
         View root = inflater.inflate(R.layout.fragment_friendlist, container, false);
 
+        ListView friendList = root.findViewById(R.id.lstView_myFriends);
+
 
         addFriendButton = root.findViewById(R.id.friendlistButton2);
+        FriendlistAdapter mAdatper;
+        ArrayList<ParseObject> mArrData = new ArrayList<ParseObject>();
+        ParseQuery<ParseObject> q1 = ParseUser.getCurrentUser().getRelation("Friends").getQuery();
+        q1.include("User");
+        q1.whereNotEqualTo("User", ParseUser.getCurrentUser().getObjectId());
+        try {
+            List<ParseObject> results = q1.find();
+            for (ParseObject result : results) {
+                mArrData.add(result);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mAdatper = new FriendlistAdapter(this.getActivity(), mArrData );
+        friendList.setAdapter(mAdatper);
 
 
         addFriendButton.setOnClickListener( new View.OnClickListener() {

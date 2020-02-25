@@ -49,7 +49,8 @@ public class AddChallenge extends AppCompatActivity {
             public void onClick(final View view) {
                 // adapter.clear();
                 findChallanges.setEnabled(false);
-                ParseQuery query = new ParseQuery("Challenges");
+                ParseQuery query = new ParseQuery("challenges");
+                query.include("CreatedBy");
                 if (cName.getText().length() > 0) {
                     query.whereContains("Name", cName.getText().toString());
                 }

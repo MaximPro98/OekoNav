@@ -17,6 +17,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChallengeProfile extends AppCompatActivity {
     public ParseObject o;
@@ -33,13 +34,7 @@ public class ChallengeProfile extends AppCompatActivity {
         TextView challangeTitle = findViewById(R.id.txt_ChallangeNameProfile);
         TextView points = findViewById(R.id.txt_points);
         ParseUser current = ParseUser.getCurrentUser();
-        ArrayList<String> challangeList = new ArrayList<String>();
-        if (current.getList("myChallanges") != null) {
-            for (int i = 0; i < current.getList("myChallanges").size(); i++) {
-                String ch = current.getList("myChallanges").get(i).toString();
-                challangeList.add(ch);
-            }
-        }
+        List<String> challangeList = current.getList("myChallanges");
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
 
@@ -53,12 +48,42 @@ public class ChallengeProfile extends AppCompatActivity {
                 Toast.makeText(ChallengeProfile.this, "Challange Added to list", Toast.LENGTH_SHORT);
             }
         });
+        completeChallange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                for(int i = 0; i < challangeList.size(); i++){
+                    if(challangeList.get(i) == o.getObjectId()) challangeList.remove(i);
+
+                }
+                current.put("myChallanges", challangeList);
+                int score = current.getInt("Score");
+                int toAdd = Integer.parseInt(o.getString("Score"));
+                current.put("Score", score+toAdd);
+                current.saveInBackground();
+                Toast.makeText(ChallengeProfile.this, "Congrats! You wont the Challange! ", Toast.LENGTH_SHORT);
+            }
+        });
+        giveupChallange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                for(int i = 0; i < challangeList.size(); i++){
+                    if(challangeList.get(i) == o.getObjectId()) challangeList.remove(i);
+
+                }
+                current.put("myChallanges", challangeList);
+                current.saveInBackground();
+                Toast.makeText(ChallengeProfile.this, "Good Luck Next time!", Toast.LENGTH_SHORT);
+            }
+        });
+
+
 
         if (b != null) {
             o = (ParseObject) b.get("ChallangeInfo");
             Boolean isReq = (boolean) b.get("ChallangeInfoReq");
             Log.i("Current INFO SCREEN PASSED", "VALUE: " + o.get("Name").toString());
-            points.setText(o.getString("Score"));
+            int score = o.getInt("Score");
+            points.setText(Integer.toString(score) );
             challangeDisc.setText(o.get("ChallengeDisc").toString());
             challangeTitle.setText(o.get("Name").toString());
             if (challangeList.size() > 0) {

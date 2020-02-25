@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="fill_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingTop="7.5dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="7.5dp">
+
+    <TextView
+        android:id="@+id/txt_inviteName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|fill_horizontal|center_vertical|fill_vertical"
+        android:text="Sample Invite"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:id="@+id/txt_InviteExtra"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|center_horizontal|fill_horizontal|center_vertical|fill_vertical"
+        android:text="Sample Type"
+        android:textAlignment="viewStart" />
+
+    <Button
+        android:id="@+id/btn_AcceptRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept" />
+
+    <ImageButton
+        android:id="@+id/btn_DeleteRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:backgroundTint="#FFFFFF"
+
+        android:src="@drawable/ic_invite_delete" />
+</LinearLayout>

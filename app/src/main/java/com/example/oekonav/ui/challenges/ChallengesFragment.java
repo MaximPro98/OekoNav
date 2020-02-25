@@ -75,12 +75,12 @@ public class ChallengesFragment extends Fragment {
         ArrayList<ParseObject> challangeList = new ArrayList<ParseObject>();
         if (current.getList("myChallanges") != null) {
             for (int i = 0; i < current.getList("myChallanges").size(); i++) {
-                ParseQuery q = new ParseQuery("Challenges");
+                ParseQuery q = new ParseQuery("challenges");
+                q.include("CreatedBy");
                 q.whereEqualTo("objectId", current.getList("myChallanges").get(i));
                 try {
                     List<ParseObject> results = q.find();
                     for (ParseObject result : results) {
-                        System.out.println("Object found " + result.getObjectId());
                         mArrData.add(result);
                     }
                 } catch (ParseException e) {
@@ -109,7 +109,7 @@ public class ChallengesFragment extends Fragment {
         ((Activity) getActivity()).overridePendingTransition(0, 0);
     }
 
-    // Wechselt bei aufruf zur CreateChallengeActivity
+    // Wechselt bei aufruf zur AddChallengeActivity
     public void goToAddChallenge(View view) {
         Intent i = new Intent(getActivity(), AddChallenge.class);
         startActivity(i);

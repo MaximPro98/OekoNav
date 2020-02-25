@@ -14,8 +14,10 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SearchAdapter extends BaseAdapter {
@@ -60,6 +62,14 @@ public class SearchAdapter extends BaseAdapter {
                     public void done(List<ParseObject> scoreList, ParseException e) {
                         if (e == null) {
 
+                                ParseUser user = (ParseUser) scoreList.get(0);
+                                ParseObject newReq = new ParseObject("FriendRequests");
+                                newReq.put("SendingUser", ParseUser.getCurrentUser());
+                                newReq.put("TargetUser", user);
+                                newReq.put("Accepted", false);
+                                newReq.saveInBackground();
+                                mArrFriendData.remove(position);
+                                SearchAdapter.this.notifyDataSetChanged();
 
                         } else {
 

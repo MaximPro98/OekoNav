@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class myChallangesAdapter extends ArrayAdapter<ParseObject> {
         TextView tvName = (TextView) convertView.findViewById(R.id.txt_challange_result_name);
         TextView creator = (TextView) convertView.findViewById(R.id.txt_challange_creator_text);
         if (Challange.getBoolean("Type")) {
-            ParseObject createdBy = (ParseObject) Challange.get("CreatedBy");
+            ParseUser createdBy = (ParseUser) Challange.get("CreatedBy");
             creator.setText("Created By: " + createdBy.getString("username"));
         } else {
             creator.setText("Official Challange");
