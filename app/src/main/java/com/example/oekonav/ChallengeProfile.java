@@ -21,6 +21,8 @@ import java.util.List;
 
 public class ChallengeProfile extends AppCompatActivity {
     public ParseObject o;
+    ParseUser current = ParseUser.getCurrentUser();
+    List<String> challangeList = current.getList("myChallanges");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,18 +35,25 @@ public class ChallengeProfile extends AppCompatActivity {
         TextView challangeDisc = findViewById(R.id.txt_description);
         TextView challangeTitle = findViewById(R.id.txt_ChallangeNameProfile);
         TextView points = findViewById(R.id.txt_points);
-        ParseUser current = ParseUser.getCurrentUser();
-        List<String> challangeList = current.getList("myChallanges");
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
 
         addChallange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                challangeList.add(o.getObjectId().toString());
-                current.put("myChallanges", challangeList);
-                current.saveInBackground();
-                addChallange.setEnabled(false);
+                if(challangeList == null){
+                    challangeList =  new ArrayList<String>();
+                    challangeList.add(o.getObjectId().toString());
+                    current.put("myChallanges", challangeList);
+                    current.saveInBackground();
+                    addChallange.setEnabled(false);
+                }else{
+                    challangeList.add(o.getObjectId().toString());
+                    current.put("myChallanges", challangeList);
+                    current.saveInBackground();
+                    addChallange.setEnabled(false);
+                }
+
                 Toast.makeText(ChallengeProfile.this, "Challange Added to list", Toast.LENGTH_SHORT);
             }
         });
