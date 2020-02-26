@@ -46,7 +46,7 @@ public class FriendlistFragment extends Fragment {
         q1.include("User");
         q1.include("User2");
         q1.whereNotEqualTo("User", ParseUser.getCurrentUser().getObjectId());
-        q1.whereEqualTo("User2", ParseUser.getCurrentUser().getObjectId());
+        q1.whereMatches("User2", ParseUser.getCurrentUser().getObjectId());
         try {
             List<ParseObject> results = q1.find();
             for (ParseObject result : results) {
