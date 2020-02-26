@@ -151,7 +151,7 @@ public class ProfileFragment extends Fragment {
         if (images != null && !images.isEmpty()) {
             Uri fileURI =  Uri.fromFile(new File(images.get(0).getPath()));
             userImage.setImageBitmap(BitmapFactory.decodeFile(images.get(0).getPath()));
-            byte[] fileBytes = FileHelper.getByteArrayFromFile(null, fileURI);
+            byte[] fileBytes = FileHelper.getByteArrayFromFile(this.getActivity(), fileURI);
             fileBytes = FileHelper.reduceImageForUpload(fileBytes);
             ParseFile userimg = new ParseFile("profile_" + ParseUser.getCurrentUser().getObjectId(),fileBytes);
             userimg.saveInBackground(new SaveCallback() {

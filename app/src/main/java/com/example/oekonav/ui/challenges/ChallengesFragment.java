@@ -108,13 +108,14 @@ public class ChallengesFragment extends Fragment {
         ParseUser current = ParseUser.getCurrentUser();
         ArrayList<ParseObject> challangeList = new ArrayList<ParseObject>();
         if (current.getList("myChallanges") != null) {
+            madapter.clear();
+
             for (int i = 0; i < current.getList("myChallanges").size(); i++) {
                 ParseQuery q = new ParseQuery("challenges");
                 q.include("CreatedBy");
                 q.whereEqualTo("objectId", current.getList("myChallanges").get(i));
                 try {
                     List<ParseObject> results = q.find();
-                    madapter.clear();
                     for (ParseObject result : results) {
                         madapter.add(result);
                     }
@@ -132,14 +133,16 @@ public class ChallengesFragment extends Fragment {
         super.onViewStateRestored(savedInstanceState);
         ParseUser current = ParseUser.getCurrentUser();
         ArrayList<ParseObject> challangeList = new ArrayList<ParseObject>();
+
         if (current.getList("myChallanges") != null) {
+            madapter.clear();
+
             for (int i = 0; i < current.getList("myChallanges").size(); i++) {
                 ParseQuery q = new ParseQuery("challenges");
                 q.include("CreatedBy");
                 q.whereEqualTo("objectId", current.getList("myChallanges").get(i));
                 try {
                     List<ParseObject> results = q.find();
-                    madapter.clear();
                     for (ParseObject result : results) {
                         madapter.add(result);
                     }
