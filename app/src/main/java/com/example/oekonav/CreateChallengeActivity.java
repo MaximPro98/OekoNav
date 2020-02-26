@@ -54,7 +54,6 @@ public class CreateChallengeActivity extends AppCompatActivity {
                 newChallange.put("Score", (dropdown.getSelectedItemPosition()+1)*200);
                 newChallange.saveInBackground();
                 Toast.makeText(CreateChallengeActivity.this, "Challenge Created!", Toast.LENGTH_SHORT);
-                System.out.println("Current INDEX: " + (dropdown.getSelectedItemPosition()+1)*200+" " + newChallange.getObjectId());
 
             }
         });

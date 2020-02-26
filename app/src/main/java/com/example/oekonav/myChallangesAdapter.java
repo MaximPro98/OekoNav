@@ -33,8 +33,8 @@ public class myChallangesAdapter extends ArrayAdapter<ParseObject> {
         TextView tvName = (TextView) convertView.findViewById(R.id.txt_challange_result_name);
         TextView creator = (TextView) convertView.findViewById(R.id.txt_challange_creator_text);
         if (Challange.getBoolean("Type")) {
-            ParseUser createdBy = (ParseUser) Challange.get("CreatedBy");
-            creator.setText("Created By: " + createdBy.getString("username"));
+            String createdBy = Challange.getString("CreatedBy");
+            creator.setText("Created By: " + createdBy);
         } else {
             creator.setText("Official Challange");
         }
