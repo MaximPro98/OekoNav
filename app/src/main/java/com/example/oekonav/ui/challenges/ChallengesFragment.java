@@ -102,6 +102,56 @@ public class ChallengesFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ParseUser current = ParseUser.getCurrentUser();
+        ArrayList<ParseObject> challangeList = new ArrayList<ParseObject>();
+        if (current.getList("myChallanges") != null) {
+            for (int i = 0; i < current.getList("myChallanges").size(); i++) {
+                ParseQuery q = new ParseQuery("challenges");
+                q.include("CreatedBy");
+                q.whereEqualTo("objectId", current.getList("myChallanges").get(i));
+                try {
+                    List<ParseObject> results = q.find();
+                    madapter.clear();
+                    for (ParseObject result : results) {
+                        madapter.add(result);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            madapter.notifyDataSetChanged();
+        }
+
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        ParseUser current = ParseUser.getCurrentUser();
+        ArrayList<ParseObject> challangeList = new ArrayList<ParseObject>();
+        if (current.getList("myChallanges") != null) {
+            for (int i = 0; i < current.getList("myChallanges").size(); i++) {
+                ParseQuery q = new ParseQuery("challenges");
+                q.include("CreatedBy");
+                q.whereEqualTo("objectId", current.getList("myChallanges").get(i));
+                try {
+                    List<ParseObject> results = q.find();
+                    madapter.clear();
+                    for (ParseObject result : results) {
+                        madapter.add(result);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            madapter.notifyDataSetChanged();
+        }
+    }
+
+
     // Wechselt bei aufruf zur CreateChallengeActivity
     public void goToCreateChallenge(View view) {
         Intent i = new Intent(getActivity(), CreateChallengeActivity.class);

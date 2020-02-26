@@ -6,99 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".ChallengeProfile">
 
-    <TextView
-        android:id="@+id/txt_ChallangeNameProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Name of the Challenge"
-        android:textSize="30sp"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btn_givup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Reward:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/txt_ChallangeNameProfile"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ChallangeNameProfile" />
-
-    <TextView
-        android:id="@+id/txt_points"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="1000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-    <ScrollView
-        android:id="@+id/scrollView5"
-        android:layout_width="0dp"
-        android:layout_height="322dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_ChallangeNameProfile"
-        app:layout_constraintStart_toStartOf="@+id/txt_ChallangeNameProfile"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/txt_description"
+            android:id="@+id/txt_ChallangeNameProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The Description of the challange scription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challange"
-            android:textSize="18sp" />
-    </ScrollView>
+            android:text="Name of the Challenge"
+            android:textAlignment="center"
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Discription"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_ChallangeNameProfile"
-        app:layout_constraintStart_toStartOf="@+id/txt_ChallangeNameProfile"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reward:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Discription"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="The Description of the challange scription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challangescription of the challange"
+                android:textSize="18sp" />
+        </ScrollView>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_givup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
         android:text="I Give up"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView5"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_accept"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btn_complete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="8dp"
         android:text="Completed"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/scrollView5"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_deny"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_accept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
         android:text="Accept"
-        app:layout_constraintEnd_toEndOf="@+id/btn_givup"
-        app:layout_constraintStart_toStartOf="@+id/btn_givup"
-        app:layout_constraintTop_toBottomOf="@+id/btn_givup" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btn_deny"
-        android:layout_width="93dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="70dp"
         android:text="Deny"
-        app:layout_constraintStart_toStartOf="@+id/btn_complete"
-        app:layout_constraintTop_toBottomOf="@+id/btn_complete" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_AddChallange"

@@ -1,6 +1,8 @@
 package com.example.oekonav.ui.profile;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +42,7 @@ import static com.parse.Parse.getApplicationContext;
 
 public class ProfileFragment extends Fragment {
     private ImageView userImage;
+    private TextView userTagline;
     private ProfileViewModel profileViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +50,14 @@ public class ProfileFragment extends Fragment {
                 ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        Button editbtn = (Button) root.findViewById(R.id.button_EditProfile);
+        editbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+
+                    ProfileFragment.this.EditProfile();
+
+            }});
         userImage = root.findViewById(R.id.img_profile_view);
         try {
             ParseFile userimg = ParseUser.getCurrentUser().fetchIfNeeded().getParseFile("ProfilePicture");
@@ -67,7 +80,7 @@ public class ProfileFragment extends Fragment {
             userImage.setImageBitmap(icon);
         }
 
-        TextView userTagline = root.findViewById(R.id.textView_ProfileDesc);
+        userTagline = root.findViewById(R.id.textView_ProfileDesc);
         TextView username = root.findViewById(R.id.textView_ProfileName);
         TextView score = root.findViewById(R.id.textView_ScoreValue);
 
@@ -103,6 +116,34 @@ public class ProfileFragment extends Fragment {
 
 
         return root;
+    }
+
+    public void EditProfile() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        builder.setTitle("Enter Your new Tagline:");
+
+// Set up the input
+        final EditText input = new EditText(this.getActivity());
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                userTagline.setText(input.getText().toString());
+                ParseUser.getCurrentUser().put("Tagline", input.getText().toString());
+                ParseUser.getCurrentUser().saveInBackground();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

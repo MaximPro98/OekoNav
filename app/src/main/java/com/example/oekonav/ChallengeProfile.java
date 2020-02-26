@@ -11,7 +11,6 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.oekonav.resources.Challenge;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -61,7 +60,9 @@ public class ChallengeProfile extends AppCompatActivity {
             @Override
             public void onClick(final View view) {
                 for(int i = 0; i < challangeList.size(); i++){
-                    if(challangeList.get(i) == o.getObjectId()) challangeList.remove(i);
+                    System.out.println(o.getObjectId() + " - " + challangeList.get(i));
+                    if(challangeList.get(i).equals(o.getObjectId())) challangeList.remove(i);
+
                 }
                 current.put("myChallanges", challangeList);
                 int score = current.getInt("Score");
@@ -77,11 +78,13 @@ public class ChallengeProfile extends AppCompatActivity {
             @Override
             public void onClick(final View view) {
                 for(int i = 0; i < challangeList.size(); i++){
-                    if(challangeList.get(i) == o.getObjectId()) challangeList.remove(i);
+                    if(challangeList.get(i).equals(o.getObjectId())) challangeList.remove(i);
 
                 }
                 current.put("myChallanges", challangeList);
                 current.saveInBackground();
+                completeChallange.setEnabled(false);
+                giveupChallange.setEnabled(false);
                 Toast.makeText(ChallengeProfile.this, "Good Luck Next time!", Toast.LENGTH_SHORT);
             }
         });
