@@ -149,12 +149,16 @@ public class RegisterActivity extends AppCompatActivity {
                       && emailConf.getCurrentTextColor() == Color.GREEN &&
                               password.getCurrentTextColor() == Color.GREEN && passwordConf.getCurrentTextColor() == Color.GREEN){
 
+                          ParseACL acl = new ParseACL();
+                          acl.setPublicWriteAccess(true);
+                          acl.setPublicReadAccess(true);
                           ParseUser user = new ParseUser();
                           user.setEmail(email.getText().toString());
                           user.setPassword(password.getText().toString());
-                          user.setUsername(username.getText().toString());
+                          user.setUsername(username.getText().toString().toLowerCase());
                           user.put("Score", 0);
                           user.put("Tagline", "Hey I'm New");
+                          user.setACL(acl);
                           user.signUpInBackground(new SignUpCallback() {
                               public void done(ParseException e) {
                                   if (e == null) {

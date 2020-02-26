@@ -42,9 +42,11 @@ public class FriendlistFragment extends Fragment {
         addFriendButton = root.findViewById(R.id.friendlistButton2);
         FriendlistAdapter mAdatper;
         ArrayList<ParseObject> mArrData = new ArrayList<ParseObject>();
-        ParseQuery<ParseObject> q1 = ParseUser.getCurrentUser().getRelation("Friends").getQuery();
+        ParseQuery<ParseObject> q1 = new ParseQuery<ParseObject>("Friends");
         q1.include("User");
+        q1.include("User2");
         q1.whereNotEqualTo("User", ParseUser.getCurrentUser().getObjectId());
+        q1.whereEqualTo("User2", ParseUser.getCurrentUser().getObjectId());
         try {
             List<ParseObject> results = q1.find();
             for (ParseObject result : results) {

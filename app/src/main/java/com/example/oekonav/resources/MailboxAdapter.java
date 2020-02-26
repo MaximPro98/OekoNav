@@ -70,34 +70,30 @@ public class MailboxAdapter extends BaseAdapter {
                         if (e == null) {
                             ParseObject friend = new ParseObject("Friends");
                             friend.put("User", mArrReqData.get(position).getParseUser("SendingUser"));
+                            friend.put("User2", ParseUser.getCurrentUser());
                             friend.saveInBackground(new SaveCallback() {
                                 @Override
                                 public void done(ParseException e) {
                                     // TODO Auto-generated method stub
-                                    ParseRelation relation = ParseUser.getCurrentUser().getRelation("Friends");
-                                    relation.add(friend);
-                                    ParseUser.getCurrentUser().saveInBackground();
                                     ParseObject friend2 = new ParseObject("Friends");
+                                    friend2.put("User2", mArrReqData.get(position).getParseUser("SendingUser"));
                                     friend2.put("User", ParseUser.getCurrentUser());
                                     friend2.saveInBackground(new SaveCallback() {
                                         @Override
                                         public void done(ParseException e) {
                                             // TODO Auto-generated method stub
-                                            ParseRelation relation2 = mArrReqData.get(position).getParseUser("TargetUser").getRelation("Friends");
-                                            relation2.add(friend2);
-                                            mArrReqData.get(position).getParseUser("TargetUser").saveInBackground();
+
                                             mArrReqData.get(position).deleteInBackground();
                                             mArrReqData.remove(position);
                                             MailboxAdapter.this.notifyDataSetChanged();
+
                                         }
 
                                     });
+
                                 }
 
                             });
-
-
-
 
                         } else {
 

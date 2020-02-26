@@ -1,5 +1,7 @@
 package com.example.oekonav;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,6 +15,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -20,6 +26,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Navdrawmenu extends AppCompatActivity {
 
@@ -35,6 +43,30 @@ public class Navdrawmenu extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        TextView username = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txt_nav_username);
+        username.setText(ParseUser.getCurrentUser().getUsername());
+        TextView email = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txt_nav_email);
+        email.setText(ParseUser.getCurrentUser().getEmail());
+
+        ImageView userimage = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.img_nav_profile);
+        try {
+            ParseFile userimg = ParseUser.getCurrentUser().fetchIfNeeded().getParseFile("ProfilePicture");
+            if(userimg != null){
+                userimg.getDataInBackground(new GetDataCallback() {
+                    @Override
+                    public void done(byte[] data, ParseException e) {
+                        userimage.setImageBitmap(BitmapFactory.decodeByteArray(data,0,data.length));
+                    }
+                });
+            }else{
+
+            }
+
+        }catch (ParseException e){
+
+        }
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_profile, R.id.nav_friendlist,
                 R.id.nav_challenges, R.id.nav_mailbox)
