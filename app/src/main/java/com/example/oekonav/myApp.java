@@ -22,10 +22,8 @@ public class myApp extends Application {
                 .build()
         );
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("GCMSenderId", "731446809473");
         if (ParseUser.getCurrentUser() != null) {
             installation.put("user", ParseUser.getCurrentUser());
-
         }
         installation.saveInBackground();
     }

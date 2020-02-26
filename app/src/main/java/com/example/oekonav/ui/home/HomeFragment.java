@@ -111,8 +111,8 @@ public class HomeFragment extends Fragment implements  OnMapReadyCallback,
     public void onConnected(Bundle bundle) {
         if(mGoogleApiClient.isConnected()){
             mLocationRequest = new LocationRequest();
-            mLocationRequest.setInterval(100);
-            mLocationRequest.setFastestInterval(50);
+            mLocationRequest.setInterval(10000);
+            mLocationRequest.setFastestInterval(5000);
             mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             if (ContextCompat.checkSelfPermission(getActivity(),
                     Manifest.permission.ACCESS_FINE_LOCATION)
