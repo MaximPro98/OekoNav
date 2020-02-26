@@ -12,7 +12,9 @@ import com.example.oekonav.AddFriendActivity;
 import com.example.oekonav.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -62,14 +64,20 @@ public class SearchAdapter extends BaseAdapter {
                     public void done(List<ParseObject> scoreList, ParseException e) {
                         if (e == null) {
 
-                                ParseUser user = (ParseUser) scoreList.get(0);
-                                ParseObject newReq = new ParseObject("FriendRequests");
-                                newReq.put("SendingUser", ParseUser.getCurrentUser());
-                                newReq.put("TargetUser", user);
-                                newReq.put("Accepted", false);
-                                newReq.saveInBackground();
-                                mArrFriendData.remove(position);
-                                SearchAdapter.this.notifyDataSetChanged();
+                            ParseUser user = (ParseUser) scoreList.get(0);
+                            ParseObject newReq = new ParseObject("FriendRequests");
+                            newReq.put("SendingUser", ParseUser.getCurrentUser());
+                            newReq.put("TargetUser", user);
+                            newReq.put("Accepted", false);
+                            newReq.saveInBackground();
+                            ParseQuery pushQuery = ParseInstallation.getQuery();
+                            pushQuery.whereMatches("user", user.getObjectId().toString());
+                            ParsePush push = new ParsePush();
+                            push.setQuery(pushQuery); // Set our Installation query
+                            push.setMessage("You Received a Friend Request from: " + ParseUser.getCurrentUser().getUsername());
+                            push.sendInBackground();
+                            mArrFriendData.remove(position);
+                            SearchAdapter.this.notifyDataSetChanged();
 
                         } else {
 

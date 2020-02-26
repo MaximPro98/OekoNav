@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.example.oekonav.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
@@ -82,7 +84,12 @@ public class MailboxAdapter extends BaseAdapter {
                                         @Override
                                         public void done(ParseException e) {
                                             // TODO Auto-generated method stub
-
+                                            ParseQuery pushQuery = ParseInstallation.getQuery();
+                                            pushQuery.whereMatches("user", mArrReqData.get(position).getParseUser("SendingUser").getObjectId());
+                                            ParsePush push = new ParsePush();
+                                            push.setQuery(pushQuery); // Set our Installation query
+                                            push.setMessage(mArrReqData.get(position).getParseUser("TargetUser").getUsername() + " Accepted your Friend Request");
+                                            push.sendInBackground();
                                             mArrReqData.get(position).deleteInBackground();
                                             mArrReqData.remove(position);
                                             MailboxAdapter.this.notifyDataSetChanged();
