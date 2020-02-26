@@ -66,7 +66,7 @@ public class ChallengeProfile extends AppCompatActivity {
                 }
                 current.put("myChallanges", challangeList);
                 int score = current.getInt("Score");
-                int toAdd = Integer.parseInt(o.getString("Score"));
+                int toAdd = o.getInt("Score");
                 current.put("Score", score+toAdd);
                 current.saveInBackground();
                 Toast.makeText(ChallengeProfile.this, "Congrats! You wont the Challange! ", Toast.LENGTH_SHORT);
