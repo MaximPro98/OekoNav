@@ -114,7 +114,9 @@ public class MailboxAdapter extends BaseAdapter {
                     public void done(List<ParseObject> ReqList, ParseException e) {
                         if (e == null) {
 
-                            ReqList.get(0).deleteInBackground();
+                            mArrReqData.get(position).deleteInBackground();
+                            mArrReqData.remove(position);
+                            MailboxAdapter.this.notifyDataSetChanged();
 
                         } else {
 

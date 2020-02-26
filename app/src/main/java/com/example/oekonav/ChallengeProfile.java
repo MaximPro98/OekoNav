@@ -86,27 +86,36 @@ public class ChallengeProfile extends AppCompatActivity {
             points.setText(Integer.toString(score) );
             challangeDisc.setText(o.get("ChallengeDisc").toString());
             challangeTitle.setText(o.get("Name").toString());
-            if (challangeList.size() > 0) {
-                if (challangeList.contains(o.getObjectId().toString())) {
-                    addChallange.setVisibility(View.INVISIBLE);
-                    acceptChallange.setVisibility(View.VISIBLE);
-                    denyChallange.setVisibility(View.VISIBLE);
-                    completeChallange.setVisibility(View.VISIBLE);
-                    giveupChallange.setVisibility(View.VISIBLE);
-                } else {
+            if(challangeList != null){
+                if (challangeList.size() > 0) {
+                    if (challangeList.contains(o.getObjectId().toString())) {
+                        addChallange.setVisibility(View.INVISIBLE);
+                        acceptChallange.setVisibility(View.VISIBLE);
+                        denyChallange.setVisibility(View.VISIBLE);
+                        completeChallange.setVisibility(View.VISIBLE);
+                        giveupChallange.setVisibility(View.VISIBLE);
+                    } else {
 
+                        acceptChallange.setVisibility(View.INVISIBLE);
+                        denyChallange.setVisibility(View.INVISIBLE);
+                        completeChallange.setVisibility(View.INVISIBLE);
+                        giveupChallange.setVisibility(View.INVISIBLE);
+                    }
+                } else {
+                    addChallange.setVisibility(View.VISIBLE);
                     acceptChallange.setVisibility(View.INVISIBLE);
                     denyChallange.setVisibility(View.INVISIBLE);
                     completeChallange.setVisibility(View.INVISIBLE);
                     giveupChallange.setVisibility(View.INVISIBLE);
                 }
-            } else {
+            }else{
                 addChallange.setVisibility(View.VISIBLE);
                 acceptChallange.setVisibility(View.INVISIBLE);
                 denyChallange.setVisibility(View.INVISIBLE);
                 completeChallange.setVisibility(View.INVISIBLE);
                 giveupChallange.setVisibility(View.INVISIBLE);
             }
+
             if (isReq) {
                 acceptChallange.setVisibility(View.VISIBLE);
                 denyChallange.setVisibility(View.VISIBLE);
