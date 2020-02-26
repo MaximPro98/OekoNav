@@ -49,7 +49,7 @@ public class CreateChallengeActivity extends AppCompatActivity {
                 newChallange.put("ChallengeDisc", textDesc.getText().toString());
                 newChallange.put("Name", textName.getText().toString());
                 newChallange.put("Difficulty", dropdown.getSelectedItem().toString().toLowerCase());
-                newChallange.put("CreatedBy", ParseUser.getCurrentUser());
+                newChallange.put("CreatedBy", ParseUser.getCurrentUser().getUsername().toLowerCase());
                 newChallange.put("Type", Boolean.TRUE);
                 newChallange.put("Score", (dropdown.getSelectedItemPosition()+1)*200);
                 newChallange.saveInBackground();
