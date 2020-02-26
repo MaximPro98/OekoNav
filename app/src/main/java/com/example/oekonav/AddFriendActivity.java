@@ -33,7 +33,7 @@ public class AddFriendActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String search = txtSearch.getText().toString();
+                String search = txtSearch.getText().toString().toLowerCase();
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
                 query.whereContains("username", search);
