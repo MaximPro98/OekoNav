@@ -31,7 +31,5 @@ public class myApp extends Application {
         }
         installation.saveInBackground();
 
-        ParsePush.subscribeInBackground("Users");
-
     }
 }
