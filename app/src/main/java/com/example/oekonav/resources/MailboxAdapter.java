@@ -20,6 +20,9 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 public class MailboxAdapter extends BaseAdapter {
@@ -88,7 +91,16 @@ public class MailboxAdapter extends BaseAdapter {
                                             pushQuery.whereMatches("user", mArrReqData.get(position).getParseUser("SendingUser").getObjectId());
                                             ParsePush push = new ParsePush();
                                             push.setQuery(pushQuery); // Set our Installation query
-                                            push.setMessage(mArrReqData.get(position).getParseUser("TargetUser").getUsername() + " Accepted your Friend Request");
+                                            JSONObject data = new JSONObject();
+// Put data in the JSON object
+                                            try {
+                                                data.put("alert", mArrReqData.get(position).getParseUser("TargetUser").getUsername() + " Accepted your Friend Request");
+                                                data.put("title", "Friend Request Accepted");
+                                            } catch ( JSONException ex) {
+                                                // should not happen
+                                                throw new IllegalArgumentException("unexpected parsing error", ex);
+                                            }
+                                            push.setData(data);
                                             push.sendInBackground();
                                             mArrReqData.get(position).deleteInBackground();
                                             mArrReqData.remove(position);

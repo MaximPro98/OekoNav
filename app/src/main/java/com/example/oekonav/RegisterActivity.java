@@ -167,6 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
                                   } else {
                                      errorMsg.setText("Error occured!");
                                      errorMsg.setTextColor(Color.RED);
+                                     System.out.println(e.getMessage());
                                   }
                               }
                           });

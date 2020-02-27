@@ -18,6 +18,9 @@ import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -74,7 +77,16 @@ public class SearchAdapter extends BaseAdapter {
                             pushQuery.whereMatches("user", user.getObjectId().toString());
                             ParsePush push = new ParsePush();
                             push.setQuery(pushQuery); // Set our Installation query
-                            push.setMessage("You Received a Friend Request from: " + ParseUser.getCurrentUser().getUsername());
+                            JSONObject data = new JSONObject();
+
+                            try {
+                                data.put("alert", "You Recieved a Friend Request from: " + user.getUsername());
+                                data.put("title", "New Friend Request");
+                            } catch ( JSONException ex) {
+                                // should not happen
+                                throw new IllegalArgumentException("unexpected parsing error", ex);
+                            }
+                            push.setData(data);
                             push.sendInBackground();
                             mArrFriendData.remove(position);
                             SearchAdapter.this.notifyDataSetChanged();
