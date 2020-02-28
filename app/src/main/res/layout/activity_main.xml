@@ -11,7 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="Login"
+        android:text="@string/activity_main_btn_login"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
 
@@ -20,7 +20,7 @@
         android:layout_width="330dp"
         android:layout_height="63dp"
         android:layout_marginTop="60dp"
-        android:text="ÖkoNav"
+        android:text="@string/activity_main_btn_logoheader"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,7 @@
         android:layout_width="330dp"
         android:layout_height="63dp"
         android:layout_marginTop="10dp"
-        android:text="Login"
+        android:text="@string/activity_main_btn_login"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/textLoginCaption"
@@ -45,7 +45,7 @@
         android:id="@+id/textViewRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Account Yet? Click Here"
+        android:text="@string/activity_main_textView_register"
         android:textColor="#3F51B5"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -67,7 +67,7 @@
             android:id="@+id/textInputUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username" />
+            android:hint="@string/activity_main_txtinput_username" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -83,7 +83,7 @@
             android:id="@+id/textInputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password" />
+            android:hint="@string/activity_main_txtinput_password" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

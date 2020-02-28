@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Unknown User"
+        android:text="@string/fragment_profile_txtview_profile_name"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
@@ -42,7 +42,8 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-                tools:srcCompat="@tools:sample/avatars[11]" />
+                tools:srcCompat="@tools:sample/avatars[11]"
+                android:contentDescription="@string/fragment_profile_imagedescription_profile" />
 
         </androidx.cardview.widget.CardView>
 
@@ -52,7 +53,7 @@
         android:id="@+id/textView_ScoreName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score:"
+        android:text="@string/fragment_profile_txtview_score"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
@@ -63,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="0"
+        android:text="@string/fragment_profile_txtview_score_value"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/textView_ScoreName"
         app:layout_constraintStart_toStartOf="@+id/textView_ScoreName"
@@ -81,8 +82,8 @@
         <TextView
             android:id="@+id/textView_ProfileDesc"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="TextView I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content.I have a tableLayout with two columns and two rows, both rows and the last column have match_parent for width but the layout isn't filling the parent width, it comports itself like it had wrap_content." />
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_profile_txtview_profiledescription" />
     </ScrollView>
 
     <Button
@@ -91,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Edit Profile"
+        android:text="@string/fragment_profile_btn_edit_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/scrollView2"
         app:layout_constraintHorizontal_bias="0.497"

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|left"
-            android:text="TextView"
+            android:text="@string/fragment_profile_txtview_challengename"
             android:textColor="@android:color/black"
             android:textSize="20dp" />
 
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="@string/fragment_profile_txt_challengecreator" />
     </LinearLayout>
 
     <Button
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:gravity="center|right"
-        android:text="Info"
+        android:text="@string/fragment_profile_btn_info"
         android:textAlignment="center" />
 
 </LinearLayout>

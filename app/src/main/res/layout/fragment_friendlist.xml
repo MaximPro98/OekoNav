@@ -23,7 +23,7 @@
         android:layout_height="49dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="8dp"
-        android:text="Add Friend"
+        android:text="@string/fragment_friendlist_button_add_friend"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

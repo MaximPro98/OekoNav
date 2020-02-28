@@ -19,7 +19,7 @@
             android:id="@+id/txt_Challange_Search_Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Challenge Name" />
+            android:hint="@string/activity_add_challenge_txt_challenge_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +35,7 @@
             android:id="@+id/txt_CreatorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Creator Username" />
+            android:hint="@string/activity_add_challenge_txt_creator_username" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Difficulty:"
+        android:text="@string/activity_add_challenge_txtview_difficulty"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
@@ -73,7 +73,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="Search"
+        android:text="@string/activity_add_challenge_button_search"
         app:layout_constraintBottom_toBottomOf="@+id/spinner2"
         app:layout_constraintStart_toEndOf="@+id/spinner2"
         app:layout_constraintTop_toTopOf="@+id/spinner2" />

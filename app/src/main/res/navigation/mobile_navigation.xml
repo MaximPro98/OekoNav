@@ -14,23 +14,23 @@
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.oekonav.ui.profile.ProfileFragment"
-        android:label="Profile"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_challenges"
         android:name="com.example.oekonav.ui.challenges.ChallengesFragment"
-        android:label="Challenges"
+        android:label="@string/menu_challenges"
         tools:layout="@layout/fragment_challenges" />
 
     <fragment
         android:id="@+id/nav_friendlist"
         android:name="com.example.oekonav.ui.friendlist.FriendlistFragment"
-        android:label="Friends"
+        android:label="@string/menu_friends"
         tools:layout="@layout/fragment_friendlist" />
     <fragment
         android:id="@+id/nav_mailbox"
         android:name="com.example.oekonav.ui.mailbox.MailboxFragment"
-        android:label="Mailbox"
+        android:label="@string/menu_mailbox"
         tools:layout="@layout/fragment_mailbox" />
 </navigation>
