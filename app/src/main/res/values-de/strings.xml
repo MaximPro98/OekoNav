@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OekoNav</string>
+    <string name="app_name">ÖkoNav</string>
     <string name="username">Benutzername</string>
     <string name="password">Passwort</string>
     <string name="register_new_account">Erstelle einen neuen Account</string>
@@ -13,7 +13,7 @@
     <string name="menu_gallery">Gallerie</string>
     <string name="menu_share">Teilen</string>
     <string name="menu_send">Senden</string>
-    <string name="hello_blank_fragment">Hallo blankes fragment</string>
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
     <string name="fragment_friendlist_button_add_friend">Freund hinzufügen</string>
     <string name="activity_add_challenge_txt_creator_username">Name des Erstellers</string>
     <string name="activity_add_challenge_txtview_difficulty">Schwierigkeit:</string>
@@ -74,4 +74,9 @@
     <string name="menu_friends">Freunde</string>
     <string name="menu_challenges">Herausforderungen</string>
     <string name="menu_mailbox">Postfach</string>
+    <string name="nav_header_desc">Navigationsübersicht</string>
+    <string name="title_activity_map">Karte</string>
+    <string name="title_activity_register">Registrieren</string>
+    <string name="menu_tools">Werkzeuge</string>
+    <string name="menu_slideshow">Kartenansicht</string>
 </resources>

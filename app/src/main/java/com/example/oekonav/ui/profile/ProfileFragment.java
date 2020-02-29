@@ -162,7 +162,7 @@ public class ProfileFragment extends Fragment {
                         ParseUser.getCurrentUser().saveEventually();
                         Context context = getApplicationContext();
                         CharSequence text = "Image Saved!";
-                        int duration = Toast.LENGTH_SHORT;
+                        int duration = Toast.LENGTH_LONG;
 
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
