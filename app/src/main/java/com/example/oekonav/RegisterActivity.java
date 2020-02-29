@@ -83,11 +83,10 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if(password.getText().equals(passwordConf.getText())){
-                        passwordConf.setTextColor(Color.RED);
-                    }else{
+                    if(passwordConf.getText().toString().equals(password.getText().toString())){
                         passwordConf.setTextColor(Color.GREEN);
-
+                    }else{
+                        passwordConf.setTextColor(Color.RED);
                     }
             }
 
@@ -115,7 +114,6 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         emailConf.addTextChangedListener(new TextWatcher() {
@@ -126,11 +124,10 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if(emailConf.getText().equals(email.getText())){
-                        emailConf.setTextColor(Color.RED);
-                    }else{
+                    if(emailConf.getText().toString().equals(email.getText().toString())){
                         emailConf.setTextColor(Color.GREEN);
-
+                    }else{
+                        emailConf.setTextColor(Color.RED);
                     }
             }
 
@@ -164,9 +161,13 @@ public class RegisterActivity extends AppCompatActivity {
                                   if (e == null) {
                                       errorMsg.setText("");
                                       goToMap(view);
+                                  } else if (e.getCode() == 202) {
+                                      errorMsg.setText(e.getMessage());
+                                      errorMsg.setTextColor(Color.RED);
                                   } else {
-                                     errorMsg.setText("Error occured!");
+                                     errorMsg.setText("Error Occured!");
                                      errorMsg.setTextColor(Color.RED);
+                                     System.out.println(e.getCode());
                                      System.out.println(e.getMessage());
                                   }
                               }
