@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.oekonav">
+    package="com.oekonav.oekonav">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -78,7 +78,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:configChanges="orientation"
                 android:screenOrientation="portrait"
-                android:value="com.example.oekonav.MainActivity" />
+                android:value="com.oekonav.oekonav.MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"
