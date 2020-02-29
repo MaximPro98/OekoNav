@@ -84,4 +84,5 @@
     <string name="row_item_mailbox_txt_type">Sample Type</string>
     <string name="row_item_mailbox_btn_accept">Accept</string>
     <string name="row_item_mailbox_imagedes_delete">Delete</string>
+    <string name="search_adapter_btn_add_friend">Add Friend</string>
 </resources>

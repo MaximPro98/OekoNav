@@ -55,7 +55,7 @@ public class SearchAdapter extends BaseAdapter {
 
         // Set the title and button name
         txtSchoolTitle.setText(username);
-        btnAction.setText("Add Friend");
+        btnAction.setText(R.string.search_adapter_btn_add_friend);
 
         // Click listener of button
         btnAction.setOnClickListener(new View.OnClickListener() {
